@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AutoDisasterProtection-hackathon';
+  lat = 31.2313659;
+  lng = 34.8158984;
 }
