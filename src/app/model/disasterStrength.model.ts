@@ -1,8 +1,8 @@
 export enum DisasterStrength {
-  CRITICAL,
-  VERY_HIGH,
-  HIGH,
-  MEDIUM,
-  Low,
-  Very_LOW
+  CRITICAL = "critical",
+  VERY_HIGH = "very-high",
+  HIGH = "high",
+  MEDIUM = "medium",
+  Low = "low",
+  Very_LOW = "very-low"
 }
