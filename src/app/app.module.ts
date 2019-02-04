@@ -1,23 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from "@agm/core";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { APP_CONSTANT } from "./app.constat";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatToolbarModule
+} from "@angular/material";
+
+/* For IsMarkerExist In This Point */
+/* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAyFWqLPKVZoGc2RnuIw1-q6un_Spe2Nrs'
-    })
+      apiKey: APP_CONSTANT.GOOGLE_MAP_API_KEY
+    }),
+
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

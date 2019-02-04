@@ -1,3 +1,33 @@
 agm-map {
-  height: 800px;
+  height: calc(100vh - 100px);
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: DodgerBlue;
+}
+
+.flex-item-map {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.flex-item {
+  background-color: #f1f1f1;
+  width: 30%;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
 }

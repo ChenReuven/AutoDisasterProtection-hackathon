@@ -1,25 +1,38 @@
-<h1>{{ title }}</h1>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{ title }}</span> <span class="example-spacer"></span>
+    <mat-icon class="example-icon">verified_user</mat-icon>
+    <mat-icon class="example-icon">settings</mat-icon>
+    <mat-icon class="example-icon">account_circle</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker
-    *ngFor="let m of markers; let i = index"
-    [latitude]="m.lat"
-    [longitude]="m.lng"
-    [label]="m.label"
-  >
-    <agm-info-window>
-      <div>location: sadsa</div>
-      <div>lat: dsadsa</div>
-      <div>lng: dsadsa</div>
-    </agm-info-window>
-  </agm-marker>
+<div class="flex-container">
+  <div class="flex-item">dsadsadsa</div>
+  <div class="flex-item-map">
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="m.label"
+      >
+        <agm-info-window>
+          <div>location: sadsa</div>
+          <div>lat: dsadsa</div>
+          <div>lng: dsadsa</div>
+        </agm-info-window>
+      </agm-marker>
 
-  <agm-circle
-    *ngFor="let d of disasters; let i = index"
-    [latitude]="d.lat"
-    [longitude]="d.lng"
-    [radius]="25000"
-    [fillColor]="'red'"
-  >
-  </agm-circle>
-</agm-map>
+      <agm-circle
+        *ngFor="let d of disasters; let i = index"
+        [latitude]="d.lat"
+        [longitude]="d.lng"
+        [radius]="25000"
+        [fillColor]="'red'"
+      >
+      </agm-circle>
+    </agm-map>
+  </div>
+  <div class="flex-item"> dsadsa</div>
+</div>
