@@ -38,5 +38,17 @@ export const disastersMock: Disaster[] = [
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem"
+  },
+  {
+    title: "EARTHQUAKE in Israel",
+    lat: 32.109333,
+    lng: 34.855499,
+    label: "Israel",
+    type: DisasterType.EARTHQUAKE,
+    strength: DisasterStrength.MEDIUM,
+    content:
+      "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
+      "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
+      "Lorem Lorem Lorem Lorem Lorem Lorem"
   }
 ];

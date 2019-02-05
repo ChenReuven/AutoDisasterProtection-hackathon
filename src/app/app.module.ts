@@ -25,7 +25,8 @@ import {
     BrowserAnimationsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: APP_CONSTANT.GOOGLE_MAP_API_KEY
+      apiKey: APP_CONSTANT.GOOGLE_MAP_API_KEY,
+      libraries: ["geometry"]
     }),
 
     MatCardModule,
