@@ -12,9 +12,12 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
+  MatTabsModule,
   MatToolbarModule
 } from "@angular/material";
 import { SiteService } from "./services/site.service";
+import { DisasterService } from "./services/disaster.service";
+import { ToastrModule } from "ngx-toastr";
 
 /* For IsMarkerExist In This Point */
 /* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
@@ -33,9 +36,13 @@ import { SiteService } from "./services/site.service";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTabsModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-center"
+    })
   ],
-  providers: [SiteService],
+  providers: [SiteService, DisasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

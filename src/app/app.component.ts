@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Disaster, Marker } from "./model";
-import { disastersMock } from "./mocks/disaster.mock";
-import { markersMock } from "./mocks/marker.mock";
 import { MapsAPILoader } from "@agm/core";
 import { SiteService } from "./services/site.service";
+import { DisasterService } from "./services/disaster.service";
+import { ToastrService } from "ngx-toastr";
+
 declare var google;
 
 @Component({
@@ -12,19 +13,23 @@ declare var google;
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  title = "AutoDisasterProtection-hackathon";
+  title = "Auto Disaster Protection";
   lat = 51.673858;
   lng = 7.815982;
 
   markers: Marker[] = [];
-  disasters: Disaster[] = disastersMock;
+  disasters: Disaster[];
   filteredMarkers: Marker[] = [];
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private siteService: SiteService
+    private siteService: SiteService,
+    private disasterService: DisasterService,
+    private toastr: ToastrService
   ) {
     this.markers = this.siteService.getSites();
+    //this.disasters = this.disasterService.getGeneratedDisasters();
+    this.disasters = this.disasterService.getDisasters();
   }
 
   ngOnInit(): void {
@@ -36,6 +41,7 @@ export class AppComponent implements OnInit {
       const disastersCenter = this.disasters.map(d => {
         return new google.maps.LatLng(d.lat, d.lng);
       });
+      let distanceInKm = 0;
 
       for (let i = 0; i < this.markers.length; i++) {
         const markerLoc = new google.maps.LatLng(
@@ -43,16 +49,30 @@ export class AppComponent implements OnInit {
           this.markers[i].lng
         );
         for (let j = 0; j < disastersCenter.length; j++) {
-          const distanceInKm =
+          distanceInKm =
             google.maps.geometry.spherical.computeDistanceBetween(
               markerLoc,
               disastersCenter[i]
             ) / 1000;
-          if (distanceInKm < 25) {
-            this.filteredMarkers.push(this.markers[i]);
-          }
+        }
+        if (distanceInKm < 25) {
+          this.filteredMarkers.push(this.markers[i]);
         }
       }
+
+      this.showSnackbars(this.filteredMarkers);
     });
+  }
+
+  private showSnackbars(filteredMarkers: Marker[]) {
+    for (let i = 0; i < this.filteredMarkers.length; i++) {
+      this.toastr.success(
+        filteredMarkers[i].subtitle,
+        filteredMarkers[i].title,
+        {
+          timeOut: 15000 + i * 500
+        }
+      );
+    }
   }
 }

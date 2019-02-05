@@ -1,6 +1,8 @@
 import { Disaster, DisasterType } from "../model";
 import { DisasterStrength } from "../model/disasterStrength.model";
 
+const NUMBER_OF_DISASTERS = 10;
+
 export const disastersMock: Disaster[] = [
   {
     title: "EARTHQUAKE in Dortmund",
@@ -60,3 +62,34 @@ export const disastersMock: Disaster[] = [
       "Lorem Lorem Lorem Lorem Lorem Lorem"
   }
 ];
+
+export const generateDisastersMock = (): Disaster[] => {
+  const disastersDataMock: Disaster[] = [];
+  for (let i = 0; i < NUMBER_OF_DISASTERS; i++) {
+    disastersDataMock.push({
+      title: "EARTHQUAKE in Dortmund",
+      lat: generateLat(i),
+      lng: generateLng(i),
+      label: "A",
+      type: DisasterType.EARTHQUAKE,
+      strength: DisasterStrength.MEDIUM,
+      image: "earthquake-icon.png",
+      disasterColor: "brown",
+      content:
+        "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
+        "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
+        "Lorem Lorem Lorem Lorem Lorem Lorem"
+    });
+  }
+  return disastersDataMock;
+};
+
+function generateLat(i) {
+  //return Math.floor(Math.random() * 55) + 50;
+  return 51.723858 + Math.random() * i * Math.random();
+}
+
+function generateLng(i): number {
+  //return Math.floor(Math.random() * 7) + 1;
+  return 7.895982 + Math.random() * i * Math.random();
+}

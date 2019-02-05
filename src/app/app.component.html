@@ -9,24 +9,50 @@
 
 <div class="flex-container">
   <div class="flex-item all-disaster-container">
-    <h5>All Disasters</h5>
-    <mat-card *ngFor="let d of disasters">
-      <mat-card-header>
-        <img matCardAvatar
-             src="../assets/{{d.image}}">
-        <mat-card-title>
-          <span class="text-uppercase {{d.strength}}">{{d.strength}}: </span>
-          <span class="{{d.type}}">{{d.title}}</span>
-        </mat-card-title>
-        <mat-card-subtitle>{{d.subtitle}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        {{d.content}}
-      </mat-card-content>
-    </mat-card>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">language</mat-icon>
+          Disasters
+        </ng-template>
+        <mat-card *ngFor="let d of disasters">
+          <mat-card-header>
+            <img matCardAvatar
+                 src="../assets/{{d.image}}">
+            <mat-card-title>
+              <span class="text-uppercase {{d.strength}}">{{d.strength}}: </span>
+              <span class="{{d.type}}">{{d.title}}</span>
+            </mat-card-title>
+            <mat-card-subtitle>{{d.subtitle}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            {{d.content}}
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+          Sites
+        </ng-template>
+        <mat-card *ngFor="let m of markers">
+          <mat-card-header>
+            <img matCardAvatar
+                 src="../assets/{{m.image}}">
+            <mat-card-title><span class="text-uppercase"></span>{{m.title}}</mat-card-title>
+            <mat-card-subtitle>{{m.subtitle}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            {{m.content}}
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+
   </div>
   <div class="flex-item-map">
-    <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-map [latitude]="lat" [longitude]="lng" [streetViewControl]="true" [panControl]="true">
       <agm-marker
         *ngFor="let m of markers; let i = index"
         [latitude]="m.lat"
@@ -63,6 +89,12 @@
   </div>
   <div class="flex-item">
     <h5>Automatic Backups</h5>
+    <div>
+      <button mat-button mat-raised-button color="primary">
+        <mat-icon>refresh</mat-icon>
+        <span>Discover</span>
+      </button>
+    </div>
     <div>
       <mat-card *ngFor="let fm of filteredMarkers">
         <mat-card-header>
