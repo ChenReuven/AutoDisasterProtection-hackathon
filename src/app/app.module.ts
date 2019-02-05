@@ -14,6 +14,7 @@ import {
   MatIconModule,
   MatToolbarModule
 } from "@angular/material";
+import { SiteService } from "./services/site.service";
 
 /* For IsMarkerExist In This Point */
 /* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
@@ -34,7 +35,7 @@ import {
     MatIconModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [SiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

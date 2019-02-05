@@ -3,6 +3,7 @@ import { Disaster, Marker } from "./model";
 import { disastersMock } from "./mocks/disaster.mock";
 import { markersMock } from "./mocks/marker.mock";
 import { MapsAPILoader } from "@agm/core";
+import { SiteService } from "./services/site.service";
 declare var google;
 
 @Component({
@@ -15,11 +16,16 @@ export class AppComponent implements OnInit {
   lat = 51.673858;
   lng = 7.815982;
 
-  markers: Marker[] = markersMock;
+  markers: Marker[] = [];
   disasters: Disaster[] = disastersMock;
   filteredMarkers: Marker[] = [];
 
-  constructor(private mapsAPILoader: MapsAPILoader) {}
+  constructor(
+    private mapsAPILoader: MapsAPILoader,
+    private siteService: SiteService
+  ) {
+    this.markers = this.siteService.getSites();
+  }
 
   ngOnInit(): void {
     this.mapsAPILoader.load().then(() => {
