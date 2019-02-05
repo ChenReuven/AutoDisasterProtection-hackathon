@@ -5,4 +5,7 @@ export interface Marker {
   title?: string;
   subtitle?: string;
   content?: string;
+  image?: string;
+  markerImage?: string;
+  companyName?: string;
 }

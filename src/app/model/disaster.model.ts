@@ -9,5 +9,7 @@ export interface Disaster {
   label: string;
   type?: DisasterType;
   strength?: DisasterStrength;
+  disasterColor?: string;
+  image?: string;
   content?: string;
 }

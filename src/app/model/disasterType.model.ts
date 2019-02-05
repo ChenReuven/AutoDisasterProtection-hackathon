@@ -1,5 +1,5 @@
 export enum DisasterType {
-  EARTHQUAKE,
-  TYPHOON,
-  TSUNAMI
+  EARTHQUAKE = "earthquake",
+  TYPHOON = "typhoon",
+  TSUNAMI = "tsunami"
 }

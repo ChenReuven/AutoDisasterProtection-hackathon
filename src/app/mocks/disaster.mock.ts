@@ -9,6 +9,8 @@ export const disastersMock: Disaster[] = [
     label: "A",
     type: DisasterType.EARTHQUAKE,
     strength: DisasterStrength.MEDIUM,
+    image: "earthquake-icon.png",
+    disasterColor: "brown",
     content:
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
@@ -22,6 +24,8 @@ export const disastersMock: Disaster[] = [
     label: "B",
     type: DisasterType.TSUNAMI,
     strength: DisasterStrength.HIGH,
+    image: "tsunami-icon.jpg",
+    disasterColor: "blue",
     content:
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
@@ -34,6 +38,8 @@ export const disastersMock: Disaster[] = [
     label: "C",
     type: DisasterType.TYPHOON,
     strength: DisasterStrength.Low,
+    image: "typhoon-icon.png",
+    disasterColor: "#3d8aff",
     content:
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
@@ -46,6 +52,8 @@ export const disastersMock: Disaster[] = [
     label: "Israel",
     type: DisasterType.EARTHQUAKE,
     strength: DisasterStrength.MEDIUM,
+    image: "earthquake-icon.png",
+    disasterColor: "brown",
     content:
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
       "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem " +
