@@ -5,24 +5,30 @@
     <mat-tab-group>
       <mat-tab>
         <ng-template mat-tab-label>
-          <mat-icon class="example-tab-icon">language</mat-icon>
-          Disasters
-        </ng-template>
-        <app-adb-disaster-card
-          *ngFor="let d of disasters"
-          [disaster]="d"
-        ></app-adb-disaster-card>
-      </mat-tab>
-
-      <mat-tab>
-        <ng-template mat-tab-label>
           <mat-icon class="example-tab-icon">thumb_up</mat-icon>
           Sites
         </ng-template>
         <app-adb-site-card
-          *ngFor="let m of sites"
-          [site]="m"
+          *ngFor="let site of sites"
+          [site]="site"
         ></app-adb-site-card>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">language</mat-icon>
+          Disasters
+        </ng-template>
+        <div>
+          <div *ngIf="!disasters || !disasters.length">
+            <h5>Currently there is No Disasters 😃</h5>
+          </div>
+          <div *ngIf="disasters && disasters.length">
+            <app-adb-disaster-card
+              *ngFor="let d of disasters"
+              [disaster]="d"
+            ></app-adb-disaster-card>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>
@@ -34,13 +40,13 @@
       [panControl]="true"
     >
       <agm-marker
-        *ngFor="let m of sites; let i = index"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]="m.label"
+        *ngFor="let site of sites; let i = index"
+        [latitude]="site.lat"
+        [longitude]="site.lng"
+        [label]="site.label"
       >
         <agm-info-window>
-            <app-adb-agm-info-window [site]="m"></app-adb-agm-info-window>
+          <app-adb-agm-info-window [site]="site"></app-adb-agm-info-window>
         </agm-info-window>
       </agm-marker>
 
@@ -57,13 +63,21 @@
   <div class="flex-item">
     <h5>Automatic Backups</h5>
     <div>
-      <button mat-button mat-raised-button color="primary">
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="onDiscover()"
+      >
         <mat-icon>refresh</mat-icon>
         <span>Discover</span>
       </button>
     </div>
     <div>
-      <app-adb-site-card *ngFor="let fm of filteredSites" [site]="fm"></app-adb-site-card>
+      <app-adb-site-card
+        *ngFor="let filterSite of filteredSites"
+        [site]="filterSite"
+      ></app-adb-site-card>
     </div>
   </div>
 </div>

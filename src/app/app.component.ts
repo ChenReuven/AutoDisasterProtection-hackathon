@@ -29,38 +29,11 @@ export class AppComponent implements OnInit {
   ) {
     this.sites = this.siteService.getSites();
     //this.disasters = this.disasterService.getGeneratedDisasters();
-    this.disasters = this.disasterService.getDisasters();
   }
 
   ngOnInit(): void {
     this.mapsAPILoader.load().then(() => {
-      /*const center = new google.maps.LatLng(
-        this.disasters[1].lat,
-        this.disasters[1].lng
-      );*/
-      const disastersCenter = this.disasters.map(d => {
-        return new google.maps.LatLng(d.lat, d.lng);
-      });
-      let distanceInKm = 0;
-
-      for (let i = 0; i < this.sites.length; i++) {
-        const siteLoc = new google.maps.LatLng(
-          this.sites[i].lat,
-          this.sites[i].lng
-        );
-        for (let j = 0; j < disastersCenter.length; j++) {
-          distanceInKm =
-            google.maps.geometry.spherical.computeDistanceBetween(
-              siteLoc,
-              disastersCenter[i]
-            ) / 1000;
-        }
-        if (distanceInKm < 25) {
-          this.filteredSites.push(this.sites[i]);
-        }
-      }
-
-      this.showSnackbars(this.filteredSites);
+      console.log("mapsAPILoader is loaded...");
     });
   }
 
@@ -81,5 +54,38 @@ export class AppComponent implements OnInit {
     if (audio) {
       //audio.play();
     }
+  }
+
+  private onDiscover() {
+    this.disasters = this.disasterService.getDisasters();
+
+    const disastersCenter = this.getDisastersCenter();
+    this.filteredSites = [];
+    let distanceInKm = 0;
+
+    for (let i = 0; i < this.sites.length; i++) {
+      const siteLoc = new google.maps.LatLng(
+        this.sites[i].lat,
+        this.sites[i].lng
+      );
+      for (let j = 0; j < disastersCenter.length; j++) {
+        distanceInKm =
+          google.maps.geometry.spherical.computeDistanceBetween(
+            siteLoc,
+            disastersCenter[i]
+          ) / 1000;
+      }
+      if (distanceInKm < 25) {
+        this.filteredSites.push(this.sites[i]);
+      }
+    }
+
+    this.showSnackbars(this.filteredSites);
+  }
+
+  private getDisastersCenter() {
+    return this.disasters.map(d => {
+      return new google.maps.LatLng(d.lat, d.lng);
+    });
   }
 }
