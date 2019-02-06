@@ -74,5 +74,16 @@ export class AppComponent implements OnInit {
         }
       );
     }
+
+    this.playAudio();
+  }
+
+  private playAudio() {
+    const audio = new Audio();
+    audio.src = "../assets/worms_incoming.mp3";
+    audio.load();
+    if (audio) {
+      audio.play();
+    }
   }
 }
