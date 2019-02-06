@@ -18,12 +18,22 @@ import {
 import { SiteService } from "./services/site.service";
 import { DisasterService } from "./services/disaster.service";
 import { ToastrModule } from "ngx-toastr";
+import { AdbHeaderComponent } from "./adb-header/adb-header.component";
+import { AdbDisasterCardComponent } from "./adb-disaster-card/adb-disaster-card.component";
+import { AdbSiteCardComponent } from "./adb-site-card/adb-site-card.component";
+import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-window.component";
 
 /* For IsMarkerExist In This Point */
 /* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    AdbHeaderComponent,
+    AdbDisasterCardComponent,
+    AdbSiteCardComponent,
+    AdbAgmInfoWindowComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

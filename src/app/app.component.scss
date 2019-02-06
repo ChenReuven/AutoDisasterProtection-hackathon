@@ -7,14 +7,6 @@ agm-map {
   overflow-y: scroll;
 }
 
-.example-icon {
-  padding: 0 14px;
-}
-
-.example-spacer {
-  flex: 1 1 auto;
-}
-
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
@@ -35,44 +27,6 @@ agm-map {
   margin: 10px;
   text-align: center;
   font-size: 30px;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-mat-card {
-  margin: 15px 10px;
-}
-.critical {
-  color: red;
-}
-.very-high {
-  color: orangered;
-}
-.high {
-  color: #ff4c29;
-}
-.medium {
-  color: orange;
-}
-.low {
-  color: #ff70ea;
-}
-.very-low {
-  color: black;
-}
-
-.earthquake {
-  color: brown;
-}
-
-.typhoon {
-  color: #3d8aff;
-}
-
-.tsunami {
-  color: blue;
 }
 
 .marker-tooltip{

@@ -1,11 +1,4 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>{{ title }}</span> <span class="example-spacer"></span>
-    <mat-icon class="example-icon">verified_user</mat-icon>
-    <mat-icon class="example-icon">settings</mat-icon>
-    <mat-icon class="example-icon">account_circle</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
+<app-adb-header [title]="title"></app-adb-header>
 
 <div class="flex-container">
   <div class="flex-item all-disaster-container">
@@ -15,20 +8,10 @@
           <mat-icon class="example-tab-icon">language</mat-icon>
           Disasters
         </ng-template>
-        <mat-card *ngFor="let d of disasters">
-          <mat-card-header>
-            <img matCardAvatar
-                 src="../assets/{{d.image}}">
-            <mat-card-title>
-              <span class="text-uppercase {{d.strength}}">{{d.strength}}: </span>
-              <span class="{{d.type}}">{{d.title}}</span>
-            </mat-card-title>
-            <mat-card-subtitle>{{d.subtitle}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            {{d.content}}
-          </mat-card-content>
-        </mat-card>
+        <app-adb-disaster-card
+          *ngFor="let d of disasters"
+          [disaster]="d"
+        ></app-adb-disaster-card>
       </mat-tab>
 
       <mat-tab>
@@ -36,23 +19,20 @@
           <mat-icon class="example-tab-icon">thumb_up</mat-icon>
           Sites
         </ng-template>
-        <mat-card *ngFor="let m of markers">
-          <mat-card-header>
-            <img matCardAvatar
-                 src="../assets/{{m.image}}">
-            <mat-card-title><span class="text-uppercase"></span>{{m.title}}</mat-card-title>
-            <mat-card-subtitle>{{m.subtitle}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            {{m.content}}
-          </mat-card-content>
-        </mat-card>
+        <app-adb-site-card
+          *ngFor="let m of markers"
+          [site]="m"
+        ></app-adb-site-card>
       </mat-tab>
     </mat-tab-group>
-
   </div>
   <div class="flex-item-map">
-    <agm-map [latitude]="lat" [longitude]="lng" [streetViewControl]="true" [panControl]="true">
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [streetViewControl]="true"
+      [panControl]="true"
+    >
       <agm-marker
         *ngFor="let m of markers; let i = index"
         [latitude]="m.lat"
@@ -60,20 +40,7 @@
         [label]="m.label"
       >
         <agm-info-window>
-          <mat-card>
-            <mat-card-header>
-              <img matCardAvatar
-                   src="../assets/dell.png">
-              <mat-card-title>
-                {{m.companyName}}
-              </mat-card-title>
-              <mat-card-subtitle>{{m.subtitle}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="marker-tooltip">
-              <div>lat: {{m.lat}}</div>
-              <div>lng: {{m.lng}}</div>
-            </mat-card-content>
-          </mat-card>
+            <app-adb-agm-info-window [site]="m"></app-adb-agm-info-window>
         </agm-info-window>
       </agm-marker>
 
@@ -96,17 +63,7 @@
       </button>
     </div>
     <div>
-      <mat-card *ngFor="let fm of filteredMarkers">
-        <mat-card-header>
-          <img matCardAvatar
-               src="../assets/{{fm.image}}">
-          <mat-card-title><span class="text-uppercase"></span>{{fm.title}}</mat-card-title>
-          <mat-card-subtitle>{{fm.subtitle}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          {{fm.content}}
-        </mat-card-content>
-      </mat-card>
+      <app-adb-site-card *ngFor="let fm of filteredMarkers" [site]="fm"></app-adb-site-card>
     </div>
   </div>
 </div>

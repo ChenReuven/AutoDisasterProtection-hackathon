@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <img matCardAvatar
+         src="../assets/{{disaster.image}}">
+    <mat-card-title>
+      <span class="text-uppercase {{disaster.strength}}">{{disaster.strength}}: </span>
+      <span class="{{disaster.type}}">{{disaster.title}}</span>
+    </mat-card-title>
+    <mat-card-subtitle>{{disaster.subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{disaster.content}}
+  </mat-card-content>
+</mat-card>
