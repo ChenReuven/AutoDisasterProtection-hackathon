@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:mock": "ng serve --proxy-config proxy.fe.mock.server.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

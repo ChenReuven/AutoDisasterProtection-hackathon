@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
     audio.src = "../assets/worms_incoming.mp3";
     audio.load();
     if (audio) {
-      audio.play();
+      //audio.play();
     }
   }
 

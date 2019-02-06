@@ -23,6 +23,7 @@ import { AdbHeaderComponent } from "./adb-header/adb-header.component";
 import { AdbDisasterCardComponent } from "./adb-disaster-card/adb-disaster-card.component";
 import { AdbSiteCardComponent } from "./adb-site-card/adb-site-card.component";
 import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-window.component";
+import { HttpClientModule } from "@angular/common/http";
 
 /* For IsMarkerExist In This Point */
 /* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
@@ -39,6 +40,7 @@ import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-wi
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: APP_CONSTANT.GOOGLE_MAP_API_KEY,
       libraries: ["geometry"]
