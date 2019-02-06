@@ -25,6 +25,7 @@ import { AdbSiteCardComponent } from "./adb-site-card/adb-site-card.component";
 import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-window.component";
 import { HttpClientModule } from "@angular/common/http";
 import { Routes } from "@angular/router";
+import { SocketService } from "./socket.service";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { Routes } from "@angular/router";
       positionClass: "toast-bottom-center"
     })
   ],
-  providers: [SiteService, DisasterService],
+  providers: [SiteService, DisasterService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
