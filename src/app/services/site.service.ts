@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
-import { Marker } from "../model";
-import { markersMock } from "../mocks/marker.mock";
+import { Site } from "../model";
 import { Observable, of } from "rxjs";
+import { sitesMock } from "../mocks/site.mock";
 
 @Injectable()
 export class SiteService {
   constructor() {}
 
-  getSites(): Marker[] {
-    return markersMock;
+  getSites(): Site[] {
+    return sitesMock;
   }
 
-  getObservableSites(): Observable<Marker[]> {
-    return of(markersMock);
+  getObservableSites(): Observable<Site[]> {
+    return of(sitesMock);
   }
 }

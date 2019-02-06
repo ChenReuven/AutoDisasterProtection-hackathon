@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Disaster, Marker } from "./model";
+import { Disaster, Site } from "./model";
 import { MapsAPILoader } from "@agm/core";
 import { SiteService } from "./services/site.service";
 import { DisasterService } from "./services/disaster.service";
@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
   lat = 51.673858;
   lng = 7.815982;
 
-  markers: Marker[] = [];
+  sites: Site[] = [];
   disasters: Disaster[];
-  filteredMarkers: Marker[] = [];
+  filteredSites: Site[] = [];
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     private disasterService: DisasterService,
     private toastr: ToastrService
   ) {
-    this.markers = this.siteService.getSites();
+    this.sites = this.siteService.getSites();
     //this.disasters = this.disasterService.getGeneratedDisasters();
     this.disasters = this.disasterService.getDisasters();
   }
@@ -43,36 +43,32 @@ export class AppComponent implements OnInit {
       });
       let distanceInKm = 0;
 
-      for (let i = 0; i < this.markers.length; i++) {
-        const markerLoc = new google.maps.LatLng(
-          this.markers[i].lat,
-          this.markers[i].lng
+      for (let i = 0; i < this.sites.length; i++) {
+        const siteLoc = new google.maps.LatLng(
+          this.sites[i].lat,
+          this.sites[i].lng
         );
         for (let j = 0; j < disastersCenter.length; j++) {
           distanceInKm =
             google.maps.geometry.spherical.computeDistanceBetween(
-              markerLoc,
+              siteLoc,
               disastersCenter[i]
             ) / 1000;
         }
         if (distanceInKm < 25) {
-          this.filteredMarkers.push(this.markers[i]);
+          this.filteredSites.push(this.sites[i]);
         }
       }
 
-      this.showSnackbars(this.filteredMarkers);
+      this.showSnackbars(this.filteredSites);
     });
   }
 
-  private showSnackbars(filteredMarkers: Marker[]) {
-    for (let i = 0; i < this.filteredMarkers.length; i++) {
-      this.toastr.success(
-        filteredMarkers[i].subtitle,
-        filteredMarkers[i].title,
-        {
-          timeOut: 15000 + i * 500
-        }
-      );
+  private showSnackbars(filteredSites: Site[]) {
+    for (let i = 0; i < this.filteredSites.length; i++) {
+      this.toastr.success(filteredSites[i].subtitle, filteredSites[i].title, {
+        timeOut: 15000 + i * 500
+      });
     }
 
     this.playAudio();

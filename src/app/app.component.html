@@ -20,7 +20,7 @@
           Sites
         </ng-template>
         <app-adb-site-card
-          *ngFor="let m of markers"
+          *ngFor="let m of sites"
           [site]="m"
         ></app-adb-site-card>
       </mat-tab>
@@ -34,7 +34,7 @@
       [panControl]="true"
     >
       <agm-marker
-        *ngFor="let m of markers; let i = index"
+        *ngFor="let m of sites; let i = index"
         [latitude]="m.lat"
         [longitude]="m.lng"
         [label]="m.label"
@@ -63,7 +63,7 @@
       </button>
     </div>
     <div>
-      <app-adb-site-card *ngFor="let fm of filteredMarkers" [site]="fm"></app-adb-site-card>
+      <app-adb-site-card *ngFor="let fm of filteredSites" [site]="fm"></app-adb-site-card>
     </div>
   </div>
 </div>

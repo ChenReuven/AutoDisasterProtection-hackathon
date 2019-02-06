@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Marker } from "../model";
+import { Site } from "../model";
 
 @Component({
   selector: "app-adb-site-card",
@@ -7,7 +7,7 @@ import { Marker } from "../model";
   styleUrls: ["./adb-site-card.component.scss"]
 })
 export class AdbSiteCardComponent implements OnInit {
-  @Input() site: Marker;
+  @Input() site: Site;
 
   constructor() {}
 

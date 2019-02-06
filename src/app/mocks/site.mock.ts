@@ -1,15 +1,15 @@
-import { Marker } from "../model";
+import { Site } from "../model";
 
-export const markersMock: Marker[] = [
+export const sitesMock: Site[] = [
   {
     companyName: "Company A",
     lat: 50.673858,
     lng: 7.815982,
     label: "A",
     title: "Site A",
-    subtitle: "sub marker a",
+    subtitle: "sub site a",
     image: "dell.png",
-    markerImage: "../assets/marker.png",
+    siteImage: "../assets/marker.png",
     content: "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
   },
   {
@@ -18,9 +18,9 @@ export const markersMock: Marker[] = [
     lng: 7.215982,
     label: "B",
     title: "Site B",
-    subtitle: "sub marker b",
+    subtitle: "sub site b",
     image: "dell.png",
-    markerImage: "../assets/marker.png",
+    siteImage: "../assets/marker.png",
     content: "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
   },
   {
@@ -29,9 +29,9 @@ export const markersMock: Marker[] = [
     lng: 7.895982,
     label: "C",
     title: "Site C",
-    subtitle: "sub marker c",
+    subtitle: "sub site c",
     image: "dell.png",
-    markerImage: "../assets/marker.png",
+    siteImage: "../assets/marker.png",
     content: "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
   },
   {
@@ -40,9 +40,9 @@ export const markersMock: Marker[] = [
     lng: 34.855499,
     label: "IS",
     title: "Site Israel",
-    subtitle: "sub marker israel",
+    subtitle: "sub site israel",
     image: "dell.png",
-    markerImage: "../assets/marker.png",
+    siteImage: "../assets/marker.png",
     content: "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
   }
 ];

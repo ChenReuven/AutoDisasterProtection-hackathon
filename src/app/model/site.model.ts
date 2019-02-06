@@ -1,4 +1,4 @@
-export interface Marker {
+export interface Site {
   lat: number;
   lng: number;
   label: string;
@@ -6,6 +6,6 @@ export interface Marker {
   subtitle?: string;
   content?: string;
   image?: string;
-  markerImage?: string;
+  siteImage?: string;
   companyName?: string;
 }

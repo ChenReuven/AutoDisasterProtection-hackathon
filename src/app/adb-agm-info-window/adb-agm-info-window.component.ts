@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Marker } from "../model";
+import { Site } from "../model";
 
 @Component({
   selector: "app-adb-agm-info-window",
@@ -7,7 +7,7 @@ import { Marker } from "../model";
   styleUrls: ["./adb-agm-info-window.component.scss"]
 })
 export class AdbAgmInfoWindowComponent implements OnInit {
-  @Input() site: Marker;
+  @Input() site: Site;
   constructor() {}
 
   ngOnInit() {}
