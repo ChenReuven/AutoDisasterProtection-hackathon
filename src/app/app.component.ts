@@ -4,6 +4,7 @@ import { MapsAPILoader } from "@agm/core";
 import { SiteService } from "./services/site.service";
 import { DisasterService } from "./services/disaster.service";
 import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
 
 declare var google;
 
@@ -19,7 +20,9 @@ export class AppComponent implements OnInit {
 
   sites: Site[] = [];
   disasters: Disaster[];
+  disasters$: Observable<Disaster[]>;
   filteredSites: Site[] = [];
+  shouldDiscoverLoading = false;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -28,7 +31,6 @@ export class AppComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.sites = this.siteService.getSites();
-    //this.disasters = this.disasterService.getGeneratedDisasters();
   }
 
   ngOnInit(): void {
@@ -52,39 +54,43 @@ export class AppComponent implements OnInit {
     audio.src = "../assets/worms_incoming.mp3";
     audio.load();
     if (audio) {
-      //audio.play();
+      audio.play();
     }
   }
 
   private onDiscover() {
-    this.disasters = this.disasterService.getDisasters();
+    this.disasters$ = this.disasterService.getDisastersFromServer();
+    this.shouldDiscoverLoading = true;
 
-    const disastersCenter = this.getDisastersCenter();
-    this.filteredSites = [];
-    let distanceInKm = 0;
+    this.disasters$.subscribe((disasters: Disaster[]) => {
+      this.shouldDiscoverLoading = false;
+      const disastersCenter = this.getDisastersCenter(disasters);
+      this.filteredSites = [];
+      let distanceInKm = 0;
 
-    for (let i = 0; i < this.sites.length; i++) {
-      const siteLoc = new google.maps.LatLng(
-        this.sites[i].lat,
-        this.sites[i].lng
-      );
-      for (let j = 0; j < disastersCenter.length; j++) {
-        distanceInKm =
-          google.maps.geometry.spherical.computeDistanceBetween(
-            siteLoc,
-            disastersCenter[i]
-          ) / 1000;
+      for (let i = 0; i < this.sites.length; i++) {
+        const siteLoc = new google.maps.LatLng(
+          this.sites[i].lat,
+          this.sites[i].lng
+        );
+        for (let j = 0; j < disastersCenter.length; j++) {
+          distanceInKm =
+            google.maps.geometry.spherical.computeDistanceBetween(
+              siteLoc,
+              disastersCenter[i]
+            ) / 1000;
+        }
+        if (distanceInKm < 25) {
+          this.filteredSites.push(this.sites[i]);
+        }
       }
-      if (distanceInKm < 25) {
-        this.filteredSites.push(this.sites[i]);
-      }
-    }
 
-    this.showSnackbars(this.filteredSites);
+      this.showSnackbars(this.filteredSites);
+    });
   }
 
-  private getDisastersCenter() {
-    return this.disasters.map(d => {
+  private getDisastersCenter(disasters: Disaster[]) {
+    return disasters.map(d => {
       return new google.maps.LatLng(d.lat, d.lng);
     });
   }

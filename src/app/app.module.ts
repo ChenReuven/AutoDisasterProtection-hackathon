@@ -12,6 +12,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
+  MatProgressSpinnerModule,
   MatTabsModule,
   MatToolbarModule
 } from "@angular/material";
@@ -46,6 +47,7 @@ import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-wi
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     MatTabsModule,
     ToastrModule.forRoot({

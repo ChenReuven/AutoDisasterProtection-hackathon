@@ -19,12 +19,12 @@
           Disasters
         </ng-template>
         <div>
-          <div *ngIf="!disasters || !disasters.length">
+          <div *ngIf="!(disasters$ | async)">
             <h5>Currently there is No Disasters 😃</h5>
           </div>
-          <div *ngIf="disasters && disasters.length">
+          <div>
             <app-adb-disaster-card
-              *ngFor="let d of disasters"
+              *ngFor="let d of (disasters$ | async)"
               [disaster]="d"
             ></app-adb-disaster-card>
           </div>
@@ -51,7 +51,7 @@
       </agm-marker>
 
       <agm-circle
-        *ngFor="let d of disasters; let i = index"
+        *ngFor="let d of (disasters$ | async); let i = index"
         [latitude]="d.lat"
         [longitude]="d.lng"
         [radius]="25000"
@@ -62,8 +62,10 @@
   </div>
   <div class="flex-item">
     <h5>Automatic Backups</h5>
-    <div>
+    <div class="discover-container">
+      <mat-spinner *ngIf="shouldDiscoverLoading" [diameter]="32"></mat-spinner>
       <button
+        class="discover-btn"
         mat-button
         mat-raised-button
         color="primary"
