@@ -46,5 +46,18 @@
       "disasterColor": "brown",
       "content": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem "
     }
+  ],
+  "sites": [
+    {
+      "companyName": "Company A",
+      "lat": 50.673858,
+      "lng": 7.815982,
+      "label": "A",
+      "title": "Site A",
+      "subtitle": "sub site a",
+      "image": "dell.png",
+      "siteImage": "../assets/marker.png",
+      "content": "Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem"
+    }
   ]
 }

@@ -24,9 +24,7 @@ import { AdbDisasterCardComponent } from "./adb-disaster-card/adb-disaster-card.
 import { AdbSiteCardComponent } from "./adb-site-card/adb-site-card.component";
 import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-window.component";
 import { HttpClientModule } from "@angular/common/http";
-
-/* For IsMarkerExist In This Point */
-/* https://stackblitz.com/edit/angular-h8zke9?file=src%2Fapp%2Fapp.component.ts */
+import { Routes } from "@angular/router";
 
 @NgModule({
   declarations: [

@@ -5,6 +5,8 @@ import { SiteService } from "./services/site.service";
 import { DisasterService } from "./services/disaster.service";
 import { ToastrService } from "ngx-toastr";
 import { Observable } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { map } from "rxjs/operators";
 
 declare var google;
 
@@ -25,11 +27,21 @@ export class AppComponent implements OnInit {
   shouldDiscoverLoading = false;
 
   constructor(
+    private actr: ActivatedRoute,
     private mapsAPILoader: MapsAPILoader,
     private siteService: SiteService,
     private disasterService: DisasterService,
     private toastr: ToastrService
   ) {
+    /*this.actr.data
+      .pipe(
+        map(data => {
+          return data.sites.json();
+        })
+      )
+      .subscribe(res => {
+        this.sites = res;
+      });*/
     this.sites = this.siteService.getSites();
   }
 
