@@ -17,7 +17,7 @@ declare var google;
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  title = "Auto Disaster Protection";
+  title = "Disaster Events Notification Manager";
   lat = 51.673858;
   lng = 7.815982;
 
