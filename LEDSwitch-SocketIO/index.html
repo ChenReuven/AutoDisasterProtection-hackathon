@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Arduino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h3>Red:</h3>
+    <input id="red" type="range" min="0" max="255" step="1" value="0">
+
+    <h3>Green:</h3>
+    <input id="green" type="range" min="0" max="255" step="1" value="0">
+
+    <h3>Yellow:</h3>
+    <input id="yellow" type="checkbox">
+
+    <!-- include the client socket library-->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="./js/client.js"></script>
+  </body>
+</html>
