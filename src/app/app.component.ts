@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
 import { SocketService } from "./socket.service";
+import { FormControl } from "@angular/forms";
 
 declare var google;
 
@@ -26,6 +27,9 @@ export class AppComponent implements OnInit {
   disasters$: Observable<Disaster[]>;
   filteredSites: Site[] = [];
   shouldDiscoverLoading = false;
+
+  disastersControl = new FormControl("");
+  strengthControl = new FormControl("");
 
   constructor(
     private socketService: SocketService,

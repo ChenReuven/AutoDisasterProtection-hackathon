@@ -16,7 +16,7 @@ export class SocketService {
     this.socket.emit("message", message);
   }
 
-  public onEvent(event: string): Observable<> {
+  public onEvent(event: string): Observable<any> {
     return new Observable<any>(observer => {
       this.socket.on(event, data => observer.next(data));
     });

@@ -11,8 +11,12 @@ import { APP_CONSTANT } from "./app.constat";
 import {
   MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
+  MatFormFieldModule,
   MatIconModule,
+  MatOptionModule,
   MatProgressSpinnerModule,
+  MatSelectModule,
   MatTabsModule,
   MatToolbarModule
 } from "@angular/material";
@@ -26,6 +30,7 @@ import { AdbAgmInfoWindowComponent } from "./adb-agm-info-window/adb-agm-info-wi
 import { HttpClientModule } from "@angular/common/http";
 import { Routes } from "@angular/router";
 import { SocketService } from "./socket.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -44,13 +49,18 @@ import { SocketService } from "./socket.service";
       apiKey: APP_CONSTANT.GOOGLE_MAP_API_KEY,
       libraries: ["geometry"]
     }),
-
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
+    MatOptionModule,
+    MatSelectModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatTabsModule,
+    MatExpansionModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-center"
     })
